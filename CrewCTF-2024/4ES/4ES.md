@@ -78,7 +78,7 @@ for w in tqdm(product(chars, repeat=L)):
             w, x, y, z = w, x, decrypted[ct][0], decrypted[ct][1]  
             key = sha256(w + x + y + z).digest()  
             enc_flag = 'e5218894e05e14eb7cc27dc2aeed10245bfa4426489125a55e82a3d81a15d18afd152d6c51a7024f05e15e1527afa84b'  
-  enc_flag = bytes.fromhex(enc_flag)  
+            enc_flag = bytes.fromhex(enc_flag)  
   
             print(AES.new(key, mode=AES.MODE_ECB).decrypt(enc_flag))  
   
