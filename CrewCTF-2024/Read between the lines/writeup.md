@@ -28,10 +28,10 @@ We can then construct the lattice like so: </br></br>
 ```python
 encs = [pow(i + 0x1337, e, n) for i in range(100)]
 
-M = identity_matrix(len(cts) + 2)
+M = identity_matrix(len(encs) + 2)
 M[0, -1] = c
 for i in range(1, 101):
-    M[i, -1] = cts[i-1]
+    M[i, -1] = encs[i-1]
 M[-1, -1] = n
 ```
 Reducing this matrix, we look for the target vector $(1, -b_0, -b_1, \dots, 0)$
