@@ -22,16 +22,8 @@ $$c=\sum_{i=0}^{99}b_i(i+0x1337)^e\mod n$$ \
 $b_i$ is within the ASCII printable range and therefore is very small compared to everything else so it seems obvious to construct a lattice and apply LLL to get our target vector. \
 Moving everything to one side and removing the mod: \
 $$c - b_0(0+0x1337)^e-b_1(1+0x1337)^e-...+kn=0$$ \
-We can then construct the lattice like so: \
-$$
-M = \begin{bmatrix} 
-1 & 0 & 0 & \dots & c \\ 
-0 & 1 & 0 & \dots & (0+0x1337)^e \\ 
-0 & 0 & 1 & \dots & (1+0x1337)^e \\ 
-\vdots & \vdots & \vdots & \ddots & \vdots \\ 
-0 & 0 & 0 & \dots & n 
-\end{bmatrix}
-$$
+We can then construct the lattice like so: </br></br>
+![Matrix](https://latex.codecogs.com/svg.latex?\color{white}M%20%3D%20%5Cbegin%7Bbmatrix%7D%201%20%26%200%20%26%200%20%26%20%5Cdots%20%26%20c%20%5C%5C%200%20%26%201%20%26%200%20%26%20%5Cdots%20%20%26%20(0%2B0x1337)%5Ee%20%5C%5C%200%20%26%200%20%26%201%20%26%20%5Cdots%20%20%26%20(1%2B0x1337)%5Ee%20%5C%5C%20%5Cvdots%20%26%20%5Cvdots%20%26%20%5Cvdots%20%20%26%20%5Cddots%20%26%20%5Cvdots%20%5C%5C%200%20%26%200%20%26%200%20%26%20%5Cdots%20%20%26%20n%20%5Cend%7Bbmatrix%7D)
 
 ```python
 encs = [pow(i + 0x1337, e, n) for i in range(100)]
