@@ -5,6 +5,9 @@
 ### Description
 Everyone keeps telling me how ECB isn't meta-viable and that I should stop playing it to tournaments. Well, I love ECB so I've added some new tech that should hopefully get me some better results!
 
+## Timelapse 😮 
+https://github.com/user-attachments/assets/c05612bc-a25f-463c-9c39-ba1f3e96aa80
+
 ## Writeup
 The source code for the server is short and simple, your input is encrypted and the flag is placed within your input, according to a custom checksum function
 ```py
@@ -46,3 +49,4 @@ Sending in an input of `aaaaaaaaaa}` returns us `97e6ed11d3b10676379059c57fb1891
 Look, the last block is exactly the same, therefore we know the last character of the flag is a `}`.
 
 We can do this for every byte in the flag until we get all 38 bytes: `utflag{st0p_r0ll1ng_y0ur_0wn_crypt0!!}` 😎😎😎
+
