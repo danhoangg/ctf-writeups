@@ -13,7 +13,7 @@ chksum = sum(ord(c) for c in x) % (len(x)+1)
 ```
 First thing to find out is the flag length, the program is using `Crypto.Util.Padding.pad` and so I just keep sending `aaaa` until the encrypted output's number of blocks change. 
 Sending an input of length 10, the encrypted output becomes 64 bytes long, and we can conclude that flag must be 38 bytes long.
-We also know that the last block is simply $f$(b'\x10' * 16) due to the padding. 
+We also know that the last block is simply (b'\x10' * 16) due to the padding. 
 
 Going back to `chksum = sum(ord(c) for c in x) % (len(x)+1)`. If we find an input where the checksum is the length of the input, we would essentially be encryption (input + flag).
 Getting an input of length 11 and checksum of 11, would push the last byte of the flag into the last block, I get my checksum of 11 by just going through the characters and checking the checksum:
@@ -26,7 +26,7 @@ for i in string.printable:
         print(f'using {x}')
         break
 ```
-We get `8fe44858cf9f9a43085c8792876907ed 2927539b79db724ac3424a43cb83d639 6777369a7d000b4d7ffdafda21767483 afa0cbf89467e26fef03fa11174142c5` when sending this input in
+We get `8fe44858cf9f9a43085c8792876907ed 2927539b79db724ac3424a43cb83d639 6777369a7d000b4d7ffdafda21767483 afa0cbf89467e26fef03fa11174142c5` when sending this input in `%%%%%%%%%%%` 
 
 Next we can choose an input of length 11 with a checksum of less than 11, this would let us encrypt the last letter of our input.
 We can bruteforce all the possible printable strings and therefore we can figure out the flag by bruteforcing one byte at a time!
